@@ -11,7 +11,7 @@ removed and generated again by some other program.
 
 If that happens, you're still in the folder, but you can no longer list files, go to parent directory, etc.
 
-As a work-around, you have to change to some non-deleted folder and than change back (or `cd .`).
+As a work-around, you have to change to some non-deleted folder and then change back (or `cd .`).
 
 This plugin does that for you automatically!
 
