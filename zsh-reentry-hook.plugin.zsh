@@ -8,7 +8,7 @@ autoload -Uz add-zsh-hook || { print "can't add zsh hook!"; return }
 
 reentry_hook() {
     if [[ `stat -c "%h" .` -eq 0 && -d "$PWD" ]]; then
-        builtin cd ~/ && builtin cd "$OLDPWD"
+        builtin cd .
     fi
 }
 
