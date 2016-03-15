@@ -6,8 +6,19 @@
 [[ -o interactive ]] || return #interactive only
 autoload -Uz add-zsh-hook || { print "can't add zsh hook!"; return }
 
+if stat --version && stat --version | grep GNU ; then
+	reentry_hook_stat () {
+		stat -c '%h' .
+	}
+else
+	# Assume that we are dealing with a BSD variant.
+	reentry_hook_stat () {
+		stat -f '%l' .
+	}
+fi
+
 reentry_hook() {
-    if [[ `stat -c "%h" .` -eq 0 && -d "$PWD" ]]; then
+    if [[ `reentry_hook_stat` -eq 0 && -d "$PWD" ]]; then
         builtin cd .
     fi
 }
