@@ -6,7 +6,7 @@
 [[ -o interactive ]] || return #interactive only
 autoload -Uz add-zsh-hook || { print "can't add zsh hook!"; return }
 
-if stat --version && stat --version | grep GNU ; then
+if stat --version &> /dev/null && [[ -n $(stat --version |& grep GNU) ]] ; then
 	reentry_hook_stat () {
 		stat -c '%h' .
 	}
